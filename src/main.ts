@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import 'vue-router';
-import '@/assets/main.scss';
-import App from '@/App';
+import App from 'src/app.vue';
+import 'src/assets/main.scss';
 
 new Vue({
   el: '#app',

@@ -11,7 +11,7 @@ const vueEntry = 'vue/dist/vue.esm.js';
 // TODU 项目大了之后可加入happypack和thread-loader加速构建速度
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../src/main.js'),
+    app: path.resolve(__dirname, '../src/main.ts'),
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -22,7 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
+        loader: 'tslint-loader',
         enforce: 'pre',
         include: [path.join(__dirname, '../src')],
         exclude: /node_modules/,
@@ -32,6 +32,14 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
         },
       },
       {
@@ -109,9 +117,9 @@ module.exports = {
       // 配置别名'vue$'，不然import 'vue'时，webpack找不到
       vue$: vueEntry,
       // 这个为src配置别名，非必需，为方便而已
-      '@': path.resolve(__dirname, '../src'),
+      src: path.resolve(__dirname, '../src'),
     },
     // 在import这些拓展名的文件时，可以省略拓展名
-    extensions: ['*', '.js', '.json', '.vue'],
+    extensions: ['*', '.js', '.json', '.vue', '.ts'],
   },
 };
