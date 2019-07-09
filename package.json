@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --hot --inline --progress --config config/webpack.dev.conf.js",
-    "build": "NODE_ENV=production node scripts/build.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --config config/webpack.dev.conf.js",
+    "build": "cross-env NODE_ENV=production node scripts/build.js",
     "lint": "eslint --fix --ext .js --ext .vue src/",
     "precommit": "eslint --fix --ext .js --ext .vue src/"
   },
@@ -21,6 +21,7 @@
     "autoprefixer": "^9.6.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
