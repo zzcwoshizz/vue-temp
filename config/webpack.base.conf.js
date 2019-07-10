@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
+const ForkTsChecker = require('fork-ts-checker-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const vueEntry = 'vue/dist/vue.esm.js';
@@ -39,6 +40,7 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
+          transpileOnly: true,
           appendTsSuffixTo: [/\.vue$/],
         },
       },
@@ -110,6 +112,11 @@ module.exports = {
       entry: {
         vendor: [vueEntry, 'vue-router', 'vuex'],
       },
+    }),
+    new ForkTsChecker({
+      async: false,
+      tslint: true,
+      vue: true,
     }),
   ],
   resolve: {

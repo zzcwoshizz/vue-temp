@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-console.log(1);
 export default Vue.extend({});
 </script>
 
