@@ -1,12 +1,37 @@
 <template>
   <div>
-    Typescript
+    <h3 class="title">{{ title }}</h3>
+    <p class="content">{{ content }}</p>
+    <div class="goddess">
+      <div class="right">
+        <h4 class="right__h4">background引入图片</h4>
+        <div class="right__img"></div>
+      </div>
+      <div class="left">
+        <h4 class="left__h4">img标签直接引入图片</h4>
+        <img
+          class="left__img"
+          src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2962033657,4245604671&fm=27&gp=0.jpg"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-export default Vue.extend({});
+import { Vue, Component } from 'vue-property-decorator';
+
+@Component
+export default class App extends Vue {
+  public title: string = 'hello world';
+  public content: string = 'Typescript';
+
+  private mounted() {
+    setTimeout(() => {
+      this.content = '111';
+    }, 1000);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
