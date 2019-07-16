@@ -124,7 +124,7 @@ module.exports = {
       // 配置别名'vue$'，不然import 'vue'时，webpack找不到
       vue$: vueEntry,
       // 这个为src配置别名，非必需，为方便而已
-      src: path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src'),
     },
     // 在import这些拓展名的文件时，可以省略拓展名
     extensions: ['*', '.js', '.json', '.vue', '.ts'],
